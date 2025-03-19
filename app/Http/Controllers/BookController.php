@@ -21,7 +21,12 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'author' => 'required',
+            'description' => 'required',
+        ]);
+        return response()->json(Book::create($request->all()));
     }
 
     /**
