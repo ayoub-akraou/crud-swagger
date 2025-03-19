@@ -8,14 +8,35 @@ use Illuminate\Http\Request;
 class BookController extends Controller
 {
     /**
+     * @OA\Get(
+     *     path="/api/books",
+     *     summary="Liste tous les livres",
+     *     tags={"Books"},
+     *     @OA\Response(response="200", description="Succès")
+     * )
+     */
+    /**
      * Display a listing of the resource.
      */
     public function index()
     {
         return response()->json(Book::all(), 200);
     }
-
-
+    /**
+     * @OA\Post(
+     *     path="/api/books",
+     *     summary="Ajoute un nouveau livre",
+     *     tags={"Books"},
+     *     @OA\RequestBody(
+     *         @OA\JsonContent(
+     *             required={"title", "author"},
+     *             @OA\Property(property="title", type="string", example="Le Petit Prince"),
+     *             @OA\Property(property="author", type="string", example="Antoine de Saint-Exupéry")
+     *         )
+     *     ),
+     *     @OA\Response(response="201", description="Livre créé avec succès")
+     * )
+     */
     /**
      * Store a newly created resource in storage.
      */
