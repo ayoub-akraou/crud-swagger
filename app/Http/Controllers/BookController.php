@@ -12,16 +12,9 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Book::all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,14 +28,6 @@ class BookController extends Controller
      * Display the specified resource.
      */
     public function show(Book $book)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Book $book)
     {
         //
     }
