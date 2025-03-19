@@ -42,7 +42,12 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $request->validate([
+            'title' => 'sometimes|required',
+            'author' => 'sometimes|required',
+            'description' => 'sometimes|required',
+        ]);
+        return response()->json($book->update($request->all()));
     }
 
     /**
