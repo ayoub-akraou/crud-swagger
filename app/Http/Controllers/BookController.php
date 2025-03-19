@@ -12,7 +12,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        return response()->json(Book::all());
+        return response()->json(Book::all(), 200);
     }
 
 
@@ -26,7 +26,7 @@ class BookController extends Controller
             'author' => 'required',
             'description' => 'required',
         ]);
-        return response()->json(Book::create($request->all()));
+        return response()->json(Book::create($request->all()), 201);
     }
 
     /**
@@ -34,7 +34,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        return response()->json($book);
+        return response()->json($book, 200);
     }
 
     /**
@@ -47,7 +47,7 @@ class BookController extends Controller
             'author' => 'sometimes|required',
             'description' => 'sometimes|required',
         ]);
-        return response()->json($book->update($request->all()));
+        return response()->json($book->update($request->all()), 200);
     }
 
     /**
@@ -55,6 +55,6 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        return response()->json($book->delete());
+        return response()->json($book->delete(), 200);
     }
 }
